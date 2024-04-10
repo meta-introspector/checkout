@@ -20,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # Note this update workflow can also be used as a rollback tool.
-    # For that reason, it's best to pin `actions/checkout` to a known, stable version
+    # For that reason, it's best to pin `meta-introspector/checkout` to a known, stable version
     # (typically, about two releases back).
-    - uses: actions/checkout@v4.1.1
+    - uses: meta-introspector/checkout@v4.1.1
       with:
         fetch-depth: 0
     - name: Git config

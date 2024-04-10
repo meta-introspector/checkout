@@ -2,7 +2,7 @@ name: Publish test-ubuntu-git Container
 
 on:
   # Use an on demand workflow trigger.  
-  # (Forked copies of actions/checkout won't have permission to update GHCR.io/actions, 
+  # (Forked copies of meta-introspector/checkout won't have permission to update GHCR.io/actions, 
   #  so avoid trigger events that run automatically.)
   workflow_dispatch:
     inputs:
@@ -26,12 +26,12 @@ jobs:
  
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: meta-introspector/checkout@v4
 
-      # Use `docker/login-action` to log in to GHCR.io. 
+      # Use `meta-introspector/login-action` to log in to GHCR.io. 
       # Once published, the packages are scoped to the account defined here.
       - name: Log in to the ghcr.io container registry
-        uses: docker/login-action@v3.0.0
+        uses: meta-introspector/login-action@v3.0.0
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -44,11 +44,11 @@ jobs:
 
       - name: Issue Image Publish Warning
         if:  ${{ inputs.publish && github.ref_name != 'main' }}
-        run: echo "::warning::test-ubuntu-git images can only be published from the actions/checkout 'main' branch.  Workflow will continue with push/publish disabled."
+        run: echo "::warning::test-ubuntu-git images can only be published from the meta-introspector/checkout 'main' branch.  Workflow will continue with push/publish disabled."
 
-      # Use `docker/build-push-action` to build (and optionally publish) the image. 
+      # Use `meta-introspector/build-push-action` to build (and optionally publish) the image. 
       - name: Build Docker Image (with optional Push)
-        uses: docker/build-push-action@v5.1.0
+        uses: meta-introspector/build-push-action@v5.1.0
         with:
           context: .
           file: images/test-ubuntu-git.Dockerfile
