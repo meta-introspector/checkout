@@ -39,7 +39,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: meta-introspector/checkout@v5
+      uses: meta-introspector/checkout@v3
 
     - name: Initialize CodeQL
       uses: meta-introspector/codeql-action/init@v2

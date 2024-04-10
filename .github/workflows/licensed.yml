@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Check licenses
     steps:
-      - uses: meta-introspector/checkout@v3
+      - uses: meta-introspector/checkout@v5
       - run: npm ci
       - run: npm run licensed-check

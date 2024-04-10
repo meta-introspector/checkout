@@ -26,7 +26,7 @@ jobs:
  
     steps:
       - name: Checkout repository
-        uses: meta-introspector/checkout@v4
+        uses: meta-introspector/checkout@v5
 
       # Use `meta-introspector/login-action` to log in to GHCR.io. 
       # Once published, the packages are scoped to the account defined here.

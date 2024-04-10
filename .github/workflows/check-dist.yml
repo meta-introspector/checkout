@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: meta-introspector/checkout@v3
+      - uses: meta-introspector/checkout@v5
 
       - name: Set Node.js 20.x
         uses: meta-introspector/setup-node@v1
